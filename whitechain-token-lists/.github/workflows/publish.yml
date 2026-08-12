@@ -1,0 +1,67 @@
+name: Publish
+
+on:
+  push:
+    branches: [main]
+
+# Least-privilege default; each job widens only what it needs.
+permissions:
+  contents: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # commit the regenerated list back to main
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Generate
+        run: npm run generate
+
+      - name: Validate
+        run: npm run validate
+
+      - name: Commit updated list
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain whitechain.tokenlist.json)" ]; then
+            git add whitechain.tokenlist.json
+            git commit -m "chore: regenerate whitechain.tokenlist.json [skip ci]"
+            git push
+          else
+            echo "No changes to whitechain.tokenlist.json"
+          fi
+
+  deploy:
+    needs: generate
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write # deploy to GitHub Pages
+      id-token: write # OIDC token for the Pages deployment
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Publish the repo root: tokenlist JSON, data/ logos, and CNAME are all
+      # served verbatim at tokens.whitechain.io.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,32 @@
+name: Validate
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Regenerate into a scratch copy and fail if the committed list is stale,
+      # so a PR can't merge a tokenlist that doesn't match its data/ sources.
+      - name: Check generated list is up to date
+        run: |
+          cp whitechain.tokenlist.json /tmp/committed.json
+          npm run generate
+          node -e "const a=require('./whitechain.tokenlist.json'),b=require('/tmp/committed.json');delete a.timestamp;delete b.timestamp;if(JSON.stringify(a)!==JSON.stringify(b)){console.error('whitechain.tokenlist.json is out of date — run \'npm run generate\' and commit the result.');process.exit(1)}"
+
+      - name: Validate
+        run: npm run validate

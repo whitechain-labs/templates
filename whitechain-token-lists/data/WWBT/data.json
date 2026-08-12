@@ -1,0 +1,13 @@
+{
+  "name": "Wrapped WhiteBIT Coin",
+  "symbol": "WWBT",
+  "decimals": 18,
+  "description": "Wrapped WhiteBIT Coin, the ERC-20 representation of Whitechain's native gas coin (WBT).",
+  "website": "https://whitechain.io",
+  "twitter": "@WhiteBit",
+  "tokens": {
+    "whitechain-testnet": {
+      "address": "0x4200000000000000000000000000000000000006"
+    }
+  }
+}
