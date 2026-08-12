@@ -1,0 +1,10 @@
+# This file only holds pnpm settings; it is not a workspace root. pnpm 11 reads
+# dependency build-script decisions here, not from package.json. Allow the
+# builds these deps need and block the rest.
+allowBuilds:
+  # esbuild fetches its platform binary in a postinstall (used by Vitest).
+  esbuild: true
+  # sharp: image optimization for next/image in the production build.
+  sharp: true
+  # Reown AppKit ships prebuilt dist; its postinstall is not needed.
+  '@reown/appkit': false
