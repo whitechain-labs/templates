@@ -1,0 +1,28 @@
+# pnpm settings for this app; it is not a workspace root.
+
+# pnpm blocks dependency build scripts by default. Enable only what the app
+# needs at build/runtime; deny the rest.
+allowBuilds:
+  # esbuild (via Vite/Vitest) fetches its platform binary in a postinstall.
+  esbuild: true
+  # Reown AppKit ships prebuilt dist; its postinstall is not required.
+  '@reown/appkit': false
+  # Optional native speedups for `ws` (WalletConnect); the JS fallback is fine.
+  bufferutil: false
+  'utf-8-validate': false
+  # Postinstall side-effects the app does not need.
+  core-js: false
+  protobufjs: false
+
+# Raise the minimum safe version (a floor, not a hard pin) of transitive deps
+# flagged CRITICAL/HIGH by security scanners. The committed pnpm-lock.yaml pins
+# the exact resolved versions, so builds stay deterministic.
+overrides:
+  'braces@<3.0.3': '^3.0.3'
+  'defu@<6.1.5': '^6.1.5'
+  'h3@<1.15.6': '^1.15.6'
+  'node-forge@<1.3.2': '^1.3.2'
+  'picomatch@<2.3.2': '^2.3.2'
+  'protobufjs@<7.6.1': '^7.6.1'
+  'ws@>=7.0.0 <7.5.10': '^7.5.10'
+  'ws@>=8.0.0 <8.21.0': '^8.21.0'
