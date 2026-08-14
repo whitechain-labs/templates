@@ -1,0 +1,34 @@
+{
+  "name": "Whitechain",
+  "logoURI": "https://tokens.whitechain.io/whitechain_logo.svg",
+  "keywords": [
+    "scaling",
+    "layer2",
+    "infrastructure",
+    "whitechain"
+  ],
+  "timestamp": "2026-07-14T14:52:32.580Z",
+  "tokens": [
+    {
+      "chainId": 1874,
+      "address": "0xaa7962d073935D387e8d442DA1D7149C81388f46",
+      "name": "Bridged USDT (Whitechain)",
+      "symbol": "USDT.e",
+      "decimals": 6,
+      "logoURI": "https://tokens.whitechain.io/data/USDT.e/logo.svg"
+    },
+    {
+      "chainId": 1874,
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped WhiteBIT Coin",
+      "symbol": "WWBT",
+      "decimals": 18,
+      "logoURI": "https://tokens.whitechain.io/data/WWBT/logo.svg"
+    }
+  ],
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  }
+}

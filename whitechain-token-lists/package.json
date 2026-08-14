@@ -1,0 +1,26 @@
+{
+  "name": "whitechain-token-lists",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Uniswap-standard token list for Whitechain, served at tokens.whitechain.io",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "generate": "tsx scripts/generate.ts",
+    "validate": "tsx scripts/validate.ts"
+  },
+  "dependencies": {
+    "@ethersproject/address": "^5.7.0",
+    "@uniswap/token-lists": "^1.0.0-beta.34",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "@types/node": "^20.19.0"
+  }
+}

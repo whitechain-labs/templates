@@ -1,0 +1,13 @@
+{
+  "name": "Bridged USDT (Whitechain)",
+  "symbol": "USDT.e",
+  "decimals": 6,
+  "description": "Bridged Tether USD on Whitechain testnet.",
+  "website": "https://tether.to/",
+  "twitter": "@Tether_to",
+  "tokens": {
+    "whitechain-testnet": {
+      "address": "0xaa7962d073935D387e8d442DA1D7149C81388f46"
+    }
+  }
+}
