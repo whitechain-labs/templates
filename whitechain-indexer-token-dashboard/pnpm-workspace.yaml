@@ -1,0 +1,7 @@
+# pnpm settings for this app; it is not a workspace root.
+
+# pnpm blocks dependency build scripts by default. Enable only what the app
+# needs at build time; deny the rest.
+allowBuilds:
+  # esbuild (via Vite/Vitest) fetches its platform binary in a postinstall.
+  esbuild: true

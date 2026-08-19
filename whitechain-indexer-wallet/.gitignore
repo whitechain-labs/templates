@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# build output
+/dist
+
+# testing
+/coverage
+
+# env files (a client-only SPA has no secrets, but never commit local env)
+.env
+.env*.local
+
+# misc
+.DS_Store
+*.log
+.idea
+.vscode/*
+!.vscode/extensions.json

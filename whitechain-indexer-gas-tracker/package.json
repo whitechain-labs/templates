@@ -1,0 +1,46 @@
+{
+  "name": "whitechain-indexer-gas-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Gas and network tracker for Whitechain Sepolia, built on the Blockscout Etherscan-style RPC API and REST v2 network stats.",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier:write": "prettier --write .",
+    "prettier:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^10",
+    "eslint-plugin-react-hooks": "^7",
+    "globals": "^17",
+    "prettier": "^3.8.4",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  }
+}
