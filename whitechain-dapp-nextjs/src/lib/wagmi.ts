@@ -16,7 +16,7 @@ import { type Config, createConfig, http, injected, useConnect } from 'wagmi';
  * - viem's op-stack `chainConfig`, for the L2 block and receipt formatters, the
  *   deposit transaction serializer, and the L2 predeploy addresses. Whitechain
  *   is an OP Stack chain and viem's plain entry carries none of that.
- * - `blockTime`, because the measured cadence is 1s, not the OP Stack default.
+ * - `blockTime`, because the measured cadence is 1s, not the OP Stack default of 2s.
  * - `blockCreated: 0` on Multicall3, which records that the aggregator is an OP
  *   Stack genesis preinstall and so exists at every block. This is a note for
  *   the reader, not a requirement: viem only consults `blockCreated` to reject a
@@ -34,8 +34,11 @@ export const whitechainSepolia = defineChain({
   // `chainConfig` silently erases the OP Stack ones.
   formatters: chainConfig.formatters,
   serializers: chainConfig.serializers,
-  // Whitechain Sepolia produces a block every second. `chainConfig` defaults to
-  // the 2s OP Stack cadence, which would make wagmi poll at half the rate.
+  // Whitechain Sepolia produces a block every second, measured and matching the
+  // 1s in the network reference; `chainConfig` carries the 2s OP Stack default.
+  // In milliseconds, as viem documents it. viem reads this only to derive the
+  // default timeout for its `*Sync` write actions, max(blockTime * 3, 5000)ms,
+  // so this is a correction to the record more than a behaviour change.
   blockTime: 1_000,
   contracts: {
     ...chainConfig.contracts,
