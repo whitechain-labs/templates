@@ -15,7 +15,7 @@ export interface WalletState {
 /**
  * The active wallet's connection state plus the disconnect/switch actions,
  * behind a small hook so panels read one shape. Connection itself is opened via
- * the Reown AppKit modal (`useAppKit`), not here.
+ * `useConnectWallet()` from `@/lib/wagmi`, not here.
  */
 export function useWallet(): WalletState {
   const { address, chainId, isConnected, isConnecting } = useConnection();

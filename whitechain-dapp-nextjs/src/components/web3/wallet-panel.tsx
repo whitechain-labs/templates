@@ -5,19 +5,20 @@ import { useBalance } from 'wagmi';
 
 import { Button } from '@/components/ui/button';
 import { truncateAddress } from '@/lib/format';
-import { useAppKit, whitechainTestnet } from '@/lib/wagmi';
+import { useConnectWallet, walletConnectEnabled, whitechainSepolia } from '@/lib/wagmi';
 import { useWallet } from '@/lib/wallet';
 
-const targetChainId = whitechainTestnet.id;
+const targetChainId = whitechainSepolia.id;
 
 /**
- * Client island for wallet connection. Connection is opened through Reown
- * AppKit's modal (`useAppKit().open`); account/network state and the
+ * Client island for wallet connection. `useConnectWallet()` opens the Reown
+ * AppKit modal when a project id is configured, and connects the injected
+ * wallet directly when one is not. Account/network state and the
  * disconnect/switch actions come from `useWallet()`. Balance is a plain wagmi
  * read, formatted with viem.
  */
 export function WalletPanel() {
-  const { open } = useAppKit();
+  const connect = useConnectWallet();
   const { address, chainId, isConnected, isConnecting, disconnect, switchChain } = useWallet();
   const { data: balance } = useBalance({
     address,
@@ -28,15 +29,14 @@ export function WalletPanel() {
   if (!isConnected) {
     return (
       <div className="flex flex-col gap-3">
-        <Button
-          loading={isConnecting}
-          onClick={() => {
-            void open();
-          }}
-        >
+        <Button loading={isConnecting} onClick={connect}>
           Connect wallet
         </Button>
-        <p className="text-sm text-gray-500">No wallet connected yet.</p>
+        <p className="text-sm text-gray-500">
+          {walletConnectEnabled
+            ? 'No wallet connected yet.'
+            : 'No wallet connected yet. WalletConnect is off without a Reown project id, so this connects a browser wallet such as MetaMask.'}
+        </p>
       </div>
     );
   }
