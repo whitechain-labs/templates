@@ -6,10 +6,8 @@ out/
 .logs/
 .ignore/
 
-# Ignores development broadcast logs
-!/broadcast
-/broadcast/*/31337/
-/broadcast/**/dry-run/
+# Deploy output. This is a template, so no broadcast log belongs in the tree.
+/broadcast/
 
 # Docs
 docs/
