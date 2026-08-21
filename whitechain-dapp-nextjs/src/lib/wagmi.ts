@@ -11,14 +11,17 @@ import { type Config, createConfig, http, injected, useConnect } from 'wagmi';
  * so extend its entry instead of restating the id, RPC, explorer and Multicall3
  * address. (Chain 2625 is the retired legacy L1 testnet: do not use it.)
  *
- * Two things are layered on top, and nothing else:
+ * What is layered on top, and nothing else:
  *
  * - viem's op-stack `chainConfig`, for the L2 block and receipt formatters, the
  *   deposit transaction serializer, and the L2 predeploy addresses. Whitechain
  *   is an OP Stack chain and viem's plain entry carries none of that.
- * - `blockCreated` for Multicall3. Whitechain Sepolia carries the OP Stack
- *   genesis preinstalls, so the aggregator exists from block 0. viem's entry
- *   has the address but no block; the upstream patch is in the pull request.
+ * - `blockTime`, because the measured cadence is 1s, not the OP Stack default.
+ * - `blockCreated: 0` on Multicall3, which records that the aggregator is an OP
+ *   Stack genesis preinstall and so exists at every block. This is a note for
+ *   the reader, not a requirement: viem only consults `blockCreated` to reject a
+ *   read pinned to a block older than the contract, and it treats 0 as falsy, so
+ *   the value changes no behaviour. Batching works because of the address.
  *
  * `contracts` is merged field by field on purpose. Spreading the viem entry over
  * `chainConfig` would drop the OP predeploys and leave only multicall3.
@@ -39,6 +42,8 @@ export const whitechainSepolia = defineChain({
     ...whitechainSepoliaBase.contracts,
     multicall3: {
       ...whitechainSepoliaBase.contracts.multicall3,
+      // Genesis preinstall, so no block is ever too early. viem's entry omits
+      // the field; matching viem's own convention for preinstalled aggregators.
       blockCreated: 0,
     },
   },
