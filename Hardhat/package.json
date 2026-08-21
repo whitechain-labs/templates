@@ -1,0 +1,24 @@
+{
+  "name": "whitechain-hardhat-template",
+  "version": "1.0.0",
+  "description": "Whitechain Hardhat project template with a basic contract and a documented deploy/verify flow for Whitechain Sepolia",
+  "private": true,
+  "type": "module",
+  "license": "ISC",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.ts --network whitechainSepolia"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.7",
+    "dotenv": "^17.4.2",
+    "hardhat": "^3.9.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3",
+    "viem": "^2.54.0"
+  }
+}
