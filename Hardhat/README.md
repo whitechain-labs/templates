@@ -102,8 +102,21 @@ npx hardhat verify --network whitechainSepolia <contract_address>
 ```
 
 Append constructor arguments after the address for contracts that take them.
-`Storage` takes none. Once verification succeeds, the Contract tab on the
-explorer shows the source.
+`Storage` takes none. This submits to every verifier configured for the network,
+which here is the Whitechain Blockscout explorer and Sourcify.
+
+One wrinkle specific to this template: `Storage` is already verified at another
+address on Whitechain Sepolia, so the explorer recognises the bytecode and shows
+the source for your address as a "verified twin" before you verify anything.
+Hardhat sees the source is already there and skips Blockscout, verifying only on
+Sourcify. Your address is still not verified in its own right. To record it:
+
+```shell
+npx hardhat verify blockscout --force --network whitechainSepolia <contract_address>
+```
+
+Your own contracts have unique bytecode, so they have no twin and the plain
+`verify` command covers both verifiers.
 
 ## What is in here
 
