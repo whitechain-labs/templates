@@ -7,9 +7,5 @@ optimizer = true
 optimizer_runs = 200
 
 [rpc_endpoints]
-# Whitechain Sepolia, chain 1874, the current L2 testnet. Reference it by this
-# alias instead of pasting the URL: `--rpc-url whitechain_sepolia`.
-# Chain 2625 is the retired legacy L1 testnet and is not what you want here.
+# Chain 1874. Reference it by name: --rpc-url whitechain_sepolia
 whitechain_sepolia = "${WHITECHAIN_SEPOLIA_RPC_URL}"
-
-# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
