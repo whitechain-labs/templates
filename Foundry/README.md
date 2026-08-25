@@ -38,13 +38,6 @@ npx degit whitechain-labs/templates/Foundry whitechain-foundry
 cd whitechain-foundry
 ```
 
-If you would rather use git, a sparse checkout fetches the same one folder:
-
-```shell
-git clone --filter=blob:none --sparse https://github.com/whitechain-labs/templates
-cd templates && git sparse-checkout set Foundry && cd Foundry
-```
-
 ## 2. Configure the environment
 
 ```shell

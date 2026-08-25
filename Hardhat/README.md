@@ -36,13 +36,6 @@ npx degit whitechain-labs/templates/Hardhat whitechain-hardhat
 cd whitechain-hardhat
 ```
 
-If you would rather use git, a sparse checkout fetches the same one folder:
-
-```shell
-git clone --filter=blob:none --sparse https://github.com/whitechain-labs/templates
-cd templates && git sparse-checkout set Hardhat && cd Hardhat
-```
-
 ## 2. Install dependencies
 
 ```shell

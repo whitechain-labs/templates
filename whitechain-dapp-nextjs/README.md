@@ -33,13 +33,6 @@ npx degit whitechain-labs/templates/whitechain-dapp-nextjs whitechain-dapp-nextj
 cd whitechain-dapp-nextjs
 ```
 
-The git-native equivalent, if you would rather not use `degit`:
-
-```bash
-git clone --filter=blob:none --sparse https://github.com/whitechain-labs/templates
-cd templates && git sparse-checkout set whitechain-dapp-nextjs && cd whitechain-dapp-nextjs
-```
-
 > Requires Node 20.18+ and pnpm (via Corepack). No registry token needed.
 
 1. Enable Corepack and install dependencies.

@@ -37,13 +37,6 @@ npx degit whitechain-labs/templates/whitechain-dapp-vite whitechain-dapp-vite
 cd whitechain-dapp-vite
 ```
 
-The git-native equivalent, if you would rather not use `degit`:
-
-```bash
-git clone --filter=blob:none --sparse https://github.com/whitechain-labs/templates
-cd templates && git sparse-checkout set whitechain-dapp-vite && cd whitechain-dapp-vite
-```
-
 > Requires Node 20.19+ and pnpm (via Corepack).
 
 1. Enable Corepack and install dependencies.
