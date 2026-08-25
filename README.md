@@ -1,64 +1,59 @@
 # Whitechain templates
 
-Starter templates for building on [Whitechain](https://whitechain.io). Every
-template is self-contained, installs from public npm, and carries its own setup
-instructions in its `README.md`. All of them target Whitechain Sepolia (testnet,
-chain id 1874).
+Runnable starter projects for [Whitechain](https://whitechain.io), the
+EVM-compatible OP Stack Layer 2. Every template targets **Whitechain Sepolia**,
+chain ID **1874**, the current L2 testnet.
 
-Each template has a companion page in the
-[Whitechain documentation](https://docs.whitechain.io) that walks through the same
-material request by request.
+Documentation: https://docs.whitechain.io
 
-## Dapps
+## Get one folder, not the whole repository
 
-Wallet-connected frontends that read and write the example `Storage` contract.
+Each template is self-contained, so pull only the one you want:
 
-| Template | What it is | Docs |
-| --- | --- | --- |
-| [`whitechain-dapp-nextjs/`](whitechain-dapp-nextjs) | Next + [Reown AppKit](https://reown.com/) starter. Use it when you need SSR or a server side to hide secrets. | [Build a dapp with Next.js](https://docs.whitechain.io/build/dapps/dapp-with-nextjs) |
-| [`whitechain-dapp-vite/`](whitechain-dapp-vite) | The same dapp as a client-only Vite SPA with TanStack Router. Use it for a static app with no server secrets. | [Build a dapp with Vite](https://docs.whitechain.io/build/dapps/dapp-with-vite) |
-
-## Indexing examples
-
-Read-only views built entirely on the public
-[Blockscout explorer](https://explorer.testnet.whitechain.io). No node, no indexer,
-and no API key of your own. Each one leads with a different API surface, so between
-them they cover all four the explorer exposes.
-
-| Template | Leads with | Docs |
-| --- | --- | --- |
-| [`whitechain-indexer-wallet/`](whitechain-indexer-wallet) | REST v2 and ETH JSON-RPC: balances, token holdings, and transaction history for any address | [Wallet indexing example](https://docs.whitechain.io/build/block-explorer/indexer-wallet) |
-| [`whitechain-indexer-token-dashboard/`](whitechain-indexer-token-dashboard) | GraphQL for a paginated transfer feed, REST v2 for metadata, counters, and holders | [Token dashboard indexing example](https://docs.whitechain.io/build/block-explorer/indexer-token-dashboard) |
-| [`whitechain-indexer-gas-tracker/`](whitechain-indexer-gas-tracker) | The Etherscan-compatible RPC API, with REST v2 `/stats` for the gas tiers | [Gas and network tracker example](https://docs.whitechain.io/build/block-explorer/indexer-gas-tracker) |
-
-All three share one UI kit, Tailwind setup, and tooling with the dapp starters, and
-every value they render is labelled with the request that produced it.
-
-## Token list
-
-- [`whitechain-token-lists/`](whitechain-token-lists) — a
-  [Uniswap-standard](https://github.com/Uniswap/token-lists) token list for
-  Whitechain (testnet only for now), served at `tokens.whitechain.io`. Generated
-  from per-token source files under `data/` and validated in CI.
-
-## Getting started
-
-```bash
-git clone https://github.com/whitechain-labs/templates.git
-cd templates/<template-folder>
-pnpm install
-pnpm dev
+```shell
+npx degit whitechain-labs/templates/<folder> <folder>
 ```
 
-You will need Node 20.19 or later. The dapp templates additionally need a wallet
-with Whitechain Sepolia added and some test WBT for gas — see
-[Connect to Whitechain Sepolia](https://docs.whitechain.io/learn/get-started/connect-wallet)
-and the [faucet](https://docs.whitechain.io/learn/get-started/get-testnet-wbt).
-The indexing examples need neither: they are read-only and connect no wallet.
+For example:
 
-## Related
+```shell
+npx degit whitechain-labs/templates/Hardhat whitechain-hardhat
+```
 
-- [Whitechain documentation](https://docs.whitechain.io)
-- [Introduction to Whitechain](https://docs.whitechain.io/learn/introduction)
-- [Block explorer overview](https://docs.whitechain.io/build/block-explorer/overview)
-- [Whitechain Sepolia explorer](https://explorer.testnet.whitechain.io)
+`degit` downloads a tarball and keeps no git history, so the result is a clean
+starting point for your own repository.
+
+If you would rather use git, a sparse checkout fetches the same one folder:
+
+```shell
+git clone --filter=blob:none --sparse https://github.com/whitechain-labs/templates
+cd templates && git sparse-checkout set <folder>
+```
+
+## Templates
+
+| Folder | What it is | Guide |
+| --- | --- | --- |
+| [`Hardhat/`](Hardhat) | Hardhat 3 project with a `Storage` contract, tests, and a deploy-and-verify flow | [Deploy with Hardhat](https://docs.whitechain.io/build/deploy/deploy-with-hardhat) |
+| [`Foundry/`](Foundry) | The same contract and flow under Foundry, with `forge-std` vendored so it builds on a fresh clone | [Deploy with Foundry](https://docs.whitechain.io/build/deploy/deploy-with-foundry) |
+| [`whitechain-dapp-nextjs/`](whitechain-dapp-nextjs) | Next.js dapp starter: wallet connect, balance, and contract read and write | [Build a dapp with Next.js](https://docs.whitechain.io/build/dapps/dapp-with-nextjs) |
+| [`whitechain-dapp-vite/`](whitechain-dapp-vite) | The same dapp as a Vite single-page app | [Build a dapp with Vite](https://docs.whitechain.io/build/dapps/dapp-with-vite) |
+| [`whitechain-token-lists/`](whitechain-token-lists) | Token list for Whitechain networks | |
+
+The two contract templates ship the same `Storage` contract, so a contract you
+deploy from either one works with both dapp starters.
+
+## Network reference
+
+| | Whitechain Sepolia |
+| --- | --- |
+| Chain ID | 1874 |
+| RPC URL | https://rpc.testnet.whitechain.io |
+| Explorer | https://explorer.testnet.whitechain.io |
+| Faucet | https://faucet.testnet.whitechain.io |
+| Native token | WBT |
+
+Chain 2625 is the retired legacy L1 testnet and chain 1875 is L1 mainnet. No
+template here targets either one.
+
+Full network reference: https://docs.whitechain.io/learn/network/reference

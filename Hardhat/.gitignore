@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Hardhat
+artifacts/
+cache/
+typechain-types/
+
+# Dotenv files
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store

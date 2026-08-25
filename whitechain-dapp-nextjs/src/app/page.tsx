@@ -22,8 +22,8 @@ export default function HomePage() {
           <CardHeader>
             <h2 className="text-lg font-semibold">Wallet</h2>
             <p className="text-sm text-gray-500">
-              Connect with Reown AppKit (WalletConnect). Your account, network and balance appear
-              here once connected.
+              Your account, network and balance appear here once connected. The panel below says
+              which connectors are active.
             </p>
           </CardHeader>
           <CardBody>

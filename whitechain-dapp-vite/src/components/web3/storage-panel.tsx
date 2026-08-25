@@ -3,10 +3,10 @@ import { useReadContract, useWaitForTransactionReceipt, useWriteContract } from 
 
 import { Button } from '@/components/ui/button';
 import { storageAbi, storageAddress } from '@/lib/storage';
-import { whitechainTestnet } from '@/lib/wagmi';
+import { whitechainSepolia } from '@/lib/wagmi';
 import { useWallet } from '@/lib/wallet';
 
-const targetChainId = whitechainTestnet.id;
+const targetChainId = whitechainSepolia.id;
 
 /**
  * Storage contract panel. `retrieve()` is a public read, so it runs over the RPC

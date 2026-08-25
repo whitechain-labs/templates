@@ -1,0 +1,21 @@
+# Compiler files
+cache/
+out/
+
+# Commonly ignored directories
+.logs/
+.ignore/
+
+# Deploy output. This is a template, so no broadcast log belongs in the tree.
+/broadcast/
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store

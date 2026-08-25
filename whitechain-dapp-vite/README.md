@@ -30,6 +30,13 @@ The chain and RPC are configured in [`src/lib/wagmi.ts`](src/lib/wagmi.ts). Chan
 
 ## Quickstart
 
+Pull just this folder, without the rest of the templates repository:
+
+```bash
+npx degit whitechain-labs/templates/whitechain-dapp-vite whitechain-dapp-vite
+cd whitechain-dapp-vite
+```
+
 > Requires Node 20.19+ and pnpm (via Corepack).
 
 1. Enable Corepack and install dependencies.
@@ -39,7 +46,8 @@ The chain and RPC are configured in [`src/lib/wagmi.ts`](src/lib/wagmi.ts). Chan
    pnpm install
    ```
 
-2. Copy `.env.example` to `.env` and fill in `VITE_REOWN_PROJECT_ID` (see [Environment](#environment)).
+2. Copy `.env.example` to `.env`. You can leave it empty for now: nothing in it is
+   required to start (see [Environment](#environment)).
 
    ```bash
    cp .env.example .env
@@ -72,12 +80,25 @@ Two public build-time values. Vite exposes `VITE_*` variables to the browser bun
 
 | Variable                | Description                                                                                       |
 | ----------------------- | ------------------------------------------------------------------------------------------------- |
-| `VITE_REOWN_PROJECT_ID` | Reown/WalletConnect project ID. Create one at [dashboard.reown.com](https://dashboard.reown.com). |
+| `VITE_REOWN_PROJECT_ID` | Optional. Reown/WalletConnect project ID. Only WalletConnect needs it; blank falls back to injected wallets. |
 | `VITE_STORAGE_ADDRESS`  | Optional. Defaults to a public verified `Storage` contract; set this to use your own deployment.  |
 
 `VITE_STORAGE_ADDRESS` defaults to a verified `Storage` contract on Whitechain Sepolia:
 [`0xC880eF22c01184a3Db08F2c306684311C48cB495`](https://explorer.testnet.whitechain.io/address/0xC880eF22c01184a3Db08F2c306684311C48cB495).
 Set it only when pointing at your own deployment. Copy `.env.example` to `.env` (git-ignored) and fill in the values.
+
+### What needs a project id
+
+`VITE_REOWN_PROJECT_ID` is the only thing WalletConnect needs, and WalletConnect is the
+only thing that needs it. Leave it blank and the starter builds a wagmi config with an
+injected-wallet connector instead, so `pnpm dev` renders immediately and MetaMask or any other
+browser wallet connects. Contract reads and writes, balances, and network switching all work
+unchanged. The console says so on startup.
+
+What you give up while it is blank: WalletConnect itself, which means mobile wallets and QR
+pairing, and the Reown AppKit modal. Create a free project id at
+[dashboard.reown.com](https://dashboard.reown.com), put it in `.env`, and restart the dev
+server to turn those on.
 
 ---
 
