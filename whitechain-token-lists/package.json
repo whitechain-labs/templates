@@ -2,7 +2,7 @@
   "name": "whitechain-token-lists",
   "version": "1.0.0",
   "private": true,
-  "description": "Uniswap-standard token list for Whitechain, served at tokens.whitechain.io",
+  "description": "Uniswap-standard token list for Whitechain, served at whitechain.io/tokens",
   "license": "MIT",
   "type": "module",
   "engines": {
