@@ -6,7 +6,7 @@ import type { TokenData, TokenInfo, TokenList, Version } from "./types.js";
 
 export const DATA_DIR = "data";
 export const OUTPUT_FILE = "whitechain.tokenlist.json";
-export const BASE_URL = "https://tokens.whitechain.io";
+export const BASE_URL = "https://whitechain.io/tokens";
 
 const LIST_META = {
   name: "Whitechain",

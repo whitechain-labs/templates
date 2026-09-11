@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # Publish the repo root: tokenlist JSON, data/ logos, and CNAME are all
-      # served verbatim at tokens.whitechain.io.
+      # served verbatim from the Pages origin, reachable at whitechain.io/tokens.
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .

@@ -1,6 +1,6 @@
 # Whitechain Token List
 
-A [Uniswap-standard](https://github.com/Uniswap/token-lists) token list for Whitechain, served at **https://tokens.whitechain.io/whitechain.tokenlist.json**.
+A [Uniswap-standard](https://github.com/Uniswap/token-lists) token list for Whitechain, served at **https://whitechain.io/tokens/whitechain.tokenlist.json**.
 
 The list is generated from per-token source files under [`data/`](./data) and validated against the official `@uniswap/token-lists` JSON schema. The structure mirrors [`mantlenetworkio/mantle-token-lists`](https://github.com/mantlenetworkio/mantle-token-lists).
 
@@ -21,7 +21,7 @@ The list is generated from per-token source files under [`data/`](./data) and va
 ├── scripts/                  # generate + validate CLIs
 ├── .github/workflows/        # validate on PR; generate + publish on merge to main
 ├── whitechain.tokenlist.json # generated output – do NOT hand-edit
-├── CNAME                      # tokens.whitechain.io
+├── CNAME                      # tokens.whitechain.io (Pages origin)
 ├── package.json
 ├── tsconfig.json
 └── README.md
@@ -89,15 +89,16 @@ When Whitechain mainnet ships, add its entry here, then reference the network na
 
 ## Hosting
 
-The list is published via GitHub Pages with the `CNAME` set to `tokens.whitechain.io`. On merge to `main` the [`Publish`](./.github/workflows/publish.yml) workflow regenerates and validates the list, commits it back if it changed, and deploys the repository root to Pages. The repo root is served verbatim, so:
+The canonical URLs live under `https://whitechain.io/tokens/`. The files themselves are published by GitHub Pages – the `CNAME` keeps `tokens.whitechain.io` as the Pages origin, and the main site serves it under the `/tokens/` path. On merge to `main` the [`Publish`](./.github/workflows/publish.yml) workflow regenerates and validates the list, commits it back if it changed, and deploys the repository root to Pages. The repo root is served verbatim, so:
 
-- List: `https://tokens.whitechain.io/whitechain.tokenlist.json`
-- Logos: `https://tokens.whitechain.io/data/<SYMBOL>/logo.svg`
+- List: `https://whitechain.io/tokens/whitechain.tokenlist.json`
+- Logos: `https://whitechain.io/tokens/data/<SYMBOL>/logo.svg`
 
 Setup checklist for the domain (one-time):
 
 - Enable GitHub Pages for the repo with source **GitHub Actions**.
 - Point the `tokens.whitechain.io` DNS record at GitHub Pages.
+- Add a rule on `whitechain.io` that serves `/tokens/*` from the Pages origin, preserving the path after `/tokens/`.
 - Replace the placeholder `whitechain_logo.svg` and per-token `logo.svg` files with final artwork.
 
 ## CI
