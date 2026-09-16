@@ -118,6 +118,47 @@ npx hardhat verify blockscout --force --network whitechainSepolia <contract_addr
 Your own contracts have unique bytecode, so they have no twin and the plain
 `verify` command covers both verifiers.
 
+## Upgradeable contracts
+
+The template also ships a UUPS proxy pair, behind its own scripts. `BoxV1` is
+the implementation; `BoxV2` inherits it, so the storage layout is appended to
+and never reordered. Reordering an existing variable corrupts state on upgrade.
+
+```shell
+npm run deploy:proxy
+```
+
+The script prints what verification needs: the implementation address, the proxy
+address, the ABI-encoded initializer calldata, which is the proxy's second
+constructor argument, and the EIP-1967 implementation slot read back from the
+proxy.
+
+Verification is two calls, because Hardhat verifies one address per call. The
+implementation takes no constructor arguments, because an upgradeable contract
+initializes instead of using a constructor. The proxy takes two.
+
+```shell
+npx hardhat verify --network whitechainSepolia <implementation_address>
+npx hardhat verify --force --network whitechainSepolia <proxy_address> <implementation_address> <init_calldata>
+```
+
+`--force` is required on the proxy. Without it, Hardhat's pre-check resolves
+through the proxy to the implementation and concludes the proxy is already
+verified when it is not. Once both are verified, Blockscout reads the EIP-1967
+slot at `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc` and
+shows a `Read/Write proxy` tab.
+
+To try an upgrade, point the second script at a proxy you own. It deploys
+`BoxV2`, calls `upgradeToAndCall`, then re-reads the slot to show it moved while
+`value()` survived.
+
+```shell
+PROXY_ADDRESS=0x... npm run upgrade:proxy
+```
+
+Upgrades are guarded by `_authorizeUpgrade`, which is `onlyOwner` here, so the
+caller has to be the address that initialized the proxy.
+
 ## What is in here
 
 | Path | Purpose |
@@ -125,7 +166,12 @@ Your own contracts have unique bytecode, so they have no twin and the plain
 | [`contracts/Storage.sol`](contracts/Storage.sol) | The example contract, a single `uint256` with `store` and `retrieve`. The companion Foundry template uses the same contract |
 | [`scripts/deploy.ts`](scripts/deploy.ts) | Deploy script, prints the address and the explorer link |
 | [`test/Storage.ts`](test/Storage.ts) | Tests over Hardhat's Node test runner and viem |
+| [`contracts/BoxV1.sol`](contracts/BoxV1.sol) | UUPS implementation. Initializes instead of using a constructor, so it verifies with no constructor arguments |
+| [`contracts/BoxV2.sol`](contracts/BoxV2.sol) | Second implementation, for testing an upgrade. Appends behaviour without changing the storage layout |
+| [`scripts/deploy-proxy.ts`](scripts/deploy-proxy.ts) | Deploys the implementation, then the proxy, and prints both addresses plus the initializer calldata |
+| [`scripts/upgrade-proxy.ts`](scripts/upgrade-proxy.ts) | Upgrades an existing proxy to `BoxV2` and proves the EIP-1967 slot moved while state survived |
 | [`hardhat.config.ts`](hardhat.config.ts) | Registers the `whitechainSepolia` network (chain 1874) and points verification at the Whitechain Blockscout explorer |
+| `npmFilesToBuild` in [`hardhat.config.ts`](hardhat.config.ts) | Names `ERC1967Proxy.sol` as a build root, because Hardhat 3 only emits artifacts for contracts under `contracts/` |
 
 ## Related templates
 
