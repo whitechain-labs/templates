@@ -71,6 +71,16 @@ console.log("upgradeToAndCall tx :", txHash);
 const receipt = await publicClient.waitForTransactionReceipt({ hash: txHash });
 console.log("status              :", receipt.status, "| gas used:", receipt.gasUsed.toString());
 
+// viem does not simulate a write, so a revert only shows up here. Stop rather
+// than walk the checks below against a proxy still running the old code: they
+// would report `slot moved to V2: NO`, print v1 under a line labelled "expect
+// v2", and then fail on increment() with a selector error instead of this one.
+if (receipt.status !== "success") {
+  throw new Error(
+    `upgradeToAndCall reverted in ${txHash}. The proxy still runs the old implementation.`,
+  );
+}
+
 // 3. Confirm the slot moved.
 const after = await readSlot();
 console.log("\n--- after upgrade ---");
