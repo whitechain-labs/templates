@@ -139,14 +139,25 @@ initializes instead of using a constructor. The proxy takes two.
 
 ```shell
 npx hardhat verify --network whitechainSepolia <implementation_address>
-npx hardhat verify --force --network whitechainSepolia <proxy_address> <implementation_address> <init_calldata>
+npx hardhat verify --network whitechainSepolia <proxy_address> <implementation_address> <init_calldata>
 ```
 
-`--force` is required on the proxy. Without it, Hardhat's pre-check resolves
-through the proxy to the implementation and concludes the proxy is already
-verified when it is not. Once both are verified, Blockscout reads the EIP-1967
-slot at `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc` and
-shows a `Read/Write proxy` tab.
+Blockscout finds the pair on its own. It reads the EIP-1967 slot at
+`0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc`, so it
+reports the address as an `eip1967` proxy and resolves the implementation behind
+it before either address is verified. Verifying is what puts names and an ABI on
+what it found, so the implementation's functions become readable through the
+proxy rather than appearing as raw selectors.
+
+Upgrade the proxy and the slot moves, so verify the new implementation too. The
+old one stays verified at its own address and is no longer what the proxy runs.
+
+You may meet `--force` on an implementation rather than on the proxy. Blockscout
+keeps a bytecode database, so it can already consider an address verified from a
+match against another contract, and Hardhat then refuses with "already been
+verified". If that verification is a full match, `--force` does not get past it
+either: it stops with `HHE80022`. The address is verified at that point, just not
+by your call.
 
 To try an upgrade, point the second script at a proxy you own. It deploys
 `BoxV2`, calls `upgradeToAndCall`, then re-reads the slot to show it moved while
