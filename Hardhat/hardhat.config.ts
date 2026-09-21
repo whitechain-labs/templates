@@ -12,7 +12,13 @@ const accounts = rawKey === "" ? [] : [rawKey.startsWith("0x") ? rawKey : `0x${r
 
 const config: HardhatUserConfig = {
   plugins: [hardhatToolboxViem],
-  solidity: "0.8.28",
+  solidity: {
+    version: "0.8.28",
+    // Hardhat 3 only emits artifacts for contracts under contracts/. The proxy
+    // itself lives in the OpenZeppelin package, so name it as a build root to
+    // get an ERC1967Proxy artifact for deployment and `hardhat verify`.
+    npmFilesToBuild: ["@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol"],
+  },
   networks: {
     // Chain 2625 is the retired legacy L1 testnet. This is not it.
     whitechainSepolia: {
