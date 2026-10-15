@@ -11,10 +11,16 @@ The list is generated from per-token source files under [`data/`](./data) and va
 ```
 .
 ├── data/
-│   ├── WWBT/
+│   ├── ETH/
 │   │   ├── data.json
 │   │   └── logo.svg
-│   └── USDT.e/
+│   ├── USDC/
+│   │   ├── data.json
+│   │   └── logo.svg
+│   ├── USDT/
+│   │   ├── data.json
+│   │   └── logo.svg
+│   └── WWBT/
 │       ├── data.json
 │       └── logo.svg
 ├── src/                      # chain config, types, build + validation logic

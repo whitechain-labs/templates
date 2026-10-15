@@ -1,0 +1,11 @@
+{
+  "name": "USD Coin",
+  "symbol": "USDC",
+  "decimals": 6,
+  "description": "Bridged USD Coin on Whitechain testnet.",
+  "tokens": {
+    "whitechain-testnet": {
+      "address": "0x5Eb541ba8A2DD841aF7864c3389162a23ddA8401"
+    }
+  }
+}

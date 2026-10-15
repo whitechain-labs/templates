@@ -1,6 +1,6 @@
 {
-  "name": "Bridged USDT (Whitechain)",
-  "symbol": "USDT.e",
+  "name": "Tether USD",
+  "symbol": "USDT",
   "decimals": 6,
   "description": "Bridged Tether USD on Whitechain testnet.",
   "website": "https://tether.to/",
