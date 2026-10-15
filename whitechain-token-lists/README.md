@@ -20,6 +20,12 @@ The list is generated from per-token source files under [`data/`](./data) and va
 │   ├── USDT/
 │   │   ├── data.json
 │   │   └── logo.svg
+│   ├── USDW/
+│   │   ├── data.json
+│   │   └── logo.svg
+│   ├── WCATS/
+│   │   ├── data.json
+│   │   └── logo.svg
 │   └── WWBT/
 │       ├── data.json
 │       └── logo.svg

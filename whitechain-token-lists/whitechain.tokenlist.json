@@ -7,7 +7,7 @@
     "infrastructure",
     "whitechain"
   ],
-  "timestamp": "2026-10-15T12:00:34.086Z",
+  "timestamp": "2026-10-15T17:31:51.286Z",
   "tokens": [
     {
       "chainId": 1874,
@@ -32,6 +32,22 @@
       "symbol": "USDT",
       "decimals": 6,
       "logoURI": "https://whitechain.io/tokens/data/USDT/logo.svg"
+    },
+    {
+      "chainId": 1874,
+      "address": "0x071c373d58A5290982a0E916D529a27849baE6e0",
+      "name": "USDW",
+      "symbol": "USDW",
+      "decimals": 6,
+      "logoURI": "https://whitechain.io/tokens/data/USDW/logo.svg"
+    },
+    {
+      "chainId": 1874,
+      "address": "0x8c24730c69cC46F989d4fD85d53a950d4B3F9D9f",
+      "name": "WhiteCats",
+      "symbol": "WCATS",
+      "decimals": 18,
+      "logoURI": "https://whitechain.io/tokens/data/WCATS/logo.svg"
     },
     {
       "chainId": 1874,
