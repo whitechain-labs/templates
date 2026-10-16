@@ -7,15 +7,47 @@
     "infrastructure",
     "whitechain"
   ],
-  "timestamp": "2026-09-11T12:57:02.899Z",
+  "timestamp": "2026-10-16T09:14:48.156Z",
   "tokens": [
     {
       "chainId": 1874,
-      "address": "0xaa7962d073935D387e8d442DA1D7149C81388f46",
-      "name": "Bridged USDT (Whitechain)",
-      "symbol": "USDT.e",
+      "address": "0x1c7E0793c69838D1da9D5b98B5893866B977bA67",
+      "name": "Ether",
+      "symbol": "ETH",
+      "decimals": 18,
+      "logoURI": "https://whitechain.io/tokens/data/ETH/logo.svg"
+    },
+    {
+      "chainId": 1874,
+      "address": "0x5Eb541ba8A2DD841aF7864c3389162a23ddA8401",
+      "name": "USD Coin",
+      "symbol": "USDC",
       "decimals": 6,
-      "logoURI": "https://whitechain.io/tokens/data/USDT.e/logo.svg"
+      "logoURI": "https://whitechain.io/tokens/data/USDC/logo.svg"
+    },
+    {
+      "chainId": 1874,
+      "address": "0xaa7962d073935D387e8d442DA1D7149C81388f46",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "decimals": 6,
+      "logoURI": "https://whitechain.io/tokens/data/USDT/logo.svg"
+    },
+    {
+      "chainId": 1874,
+      "address": "0x071c373d58A5290982a0E916D529a27849baE6e0",
+      "name": "USDW",
+      "symbol": "USDW",
+      "decimals": 6,
+      "logoURI": "https://whitechain.io/tokens/data/USDW/logo.svg"
+    },
+    {
+      "chainId": 1874,
+      "address": "0x8c24730c69cC46F989d4fD85d53a950d4B3F9D9f",
+      "name": "WhiteCats",
+      "symbol": "WCATS",
+      "decimals": 18,
+      "logoURI": "https://whitechain.io/tokens/data/WCATS/logo.svg"
     },
     {
       "chainId": 1874,
@@ -23,12 +55,12 @@
       "name": "Wrapped WhiteBIT Coin",
       "symbol": "WWBT",
       "decimals": 18,
-      "logoURI": "https://whitechain.io/tokens/data/WWBT/logo.svg"
+      "logoURI": "https://whitechain.io/tokens/data/WWBT/logo.png"
     }
   ],
   "version": {
     "major": 1,
-    "minor": 0,
-    "patch": 1
+    "minor": 1,
+    "patch": 0
   }
 }

@@ -1,0 +1,11 @@
+{
+  "name": "Ether",
+  "symbol": "ETH",
+  "decimals": 18,
+  "description": "Bridged Ether on Whitechain testnet: an ERC-20 token pegged to WETH on Ethereum Sepolia.",
+  "tokens": {
+    "whitechain-testnet": {
+      "address": "0x1c7E0793c69838D1da9D5b98B5893866B977bA67"
+    }
+  }
+}

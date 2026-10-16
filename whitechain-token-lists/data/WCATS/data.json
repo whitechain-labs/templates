@@ -1,0 +1,11 @@
+{
+  "name": "WhiteCats",
+  "symbol": "WCATS",
+  "decimals": 18,
+  "description": "WhiteCats test token on Whitechain testnet.",
+  "tokens": {
+    "whitechain-testnet": {
+      "address": "0x8c24730c69cC46F989d4fD85d53a950d4B3F9D9f"
+    }
+  }
+}
