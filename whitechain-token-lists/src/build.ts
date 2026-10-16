@@ -14,6 +14,17 @@ const LIST_META = {
   keywords: ["scaling", "layer2", "infrastructure", "whitechain"],
 };
 
+/**
+ * The logo file of a token folder: `logo.svg` when present, otherwise `logo.png`.
+ * A folder with neither fails the build, so the list never points at a missing image.
+ */
+function logoFile(symbolDir: string): string {
+  for (const name of ["logo.svg", "logo.png"]) {
+    if (existsSync(join(DATA_DIR, symbolDir, name))) return name;
+  }
+  throw new Error(`data/${symbolDir}: no logo.svg or logo.png`);
+}
+
 /** Read and parse a single `data/<SYMBOL>/data.json`. */
 function readTokenData(symbolDir: string): TokenData {
   const file = join(DATA_DIR, symbolDir, "data.json");
@@ -53,7 +64,7 @@ export function buildTokens(): TokenInfo[] {
         name: data.name,
         symbol: data.symbol,
         decimals: data.decimals,
-        logoURI: `${BASE_URL}/${DATA_DIR}/${symbolDir}/logo.svg`,
+        logoURI: `${BASE_URL}/${DATA_DIR}/${symbolDir}/${logoFile(symbolDir)}`,
       });
     }
   }

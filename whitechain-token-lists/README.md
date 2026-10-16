@@ -28,7 +28,7 @@ The list is generated from per-token source files under [`data/`](./data) and va
 │   │   └── logo.svg
 │   └── WWBT/
 │       ├── data.json
-│       └── logo.svg
+│       └── logo.png
 ├── src/                      # chain config, types, build + validation logic
 ├── scripts/                  # generate + validate CLIs
 ├── .github/workflows/        # validate on PR; generate + publish on merge to main
@@ -80,7 +80,7 @@ npm install
 
    - Address keys under `tokens` are **network names**, not chainIds (see [`src/chains.ts`](./src/chains.ts)). The build resolves them to chainIds.
    - The `address` must be a checksummed (EIP-55) EVM address.
-3. Add `logo.svg` (256×256) in the same folder.
+3. Add `logo.svg` (256×256) in the same folder. When the asset has no SVG logo, add `logo.png` instead (square, at least 128×128). The build uses `logo.svg` first and fails if a folder has neither.
 4. Run `npm run generate` and commit both your `data/` changes and the regenerated `whitechain.tokenlist.json`.
 5. Open a PR. CI runs `npm run validate` and checks that the committed list matches its sources.
 
@@ -104,7 +104,7 @@ When Whitechain mainnet ships, add its entry here, then reference the network na
 The canonical URLs live under `https://whitechain.io/tokens/`. The files themselves are published by GitHub Pages – the `CNAME` keeps `tokens.whitechain.io` as the Pages origin, and the main site serves it under the `/tokens/` path. On merge to `main` the [`Publish`](./.github/workflows/publish.yml) workflow regenerates and validates the list, commits it back if it changed, and deploys the repository root to Pages. The repo root is served verbatim, so:
 
 - List: `https://whitechain.io/tokens/whitechain.tokenlist.json`
-- Logos: `https://whitechain.io/tokens/data/<SYMBOL>/logo.svg`
+- Logos: `https://whitechain.io/tokens/data/<SYMBOL>/logo.svg`, or `logo.png` for a token without an SVG logo
 
 Setup checklist for the domain (one-time):
 
