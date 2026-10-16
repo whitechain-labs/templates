@@ -80,7 +80,7 @@ npm install
 
    - Address keys under `tokens` are **network names**, not chainIds (see [`src/chains.ts`](./src/chains.ts)). The build resolves them to chainIds.
    - The `address` must be a checksummed (EIP-55) EVM address.
-3. Add `logo.svg` (256×256) in the same folder. When the asset has no SVG logo, add `logo.png` instead (square, at least 128×128). The build uses `logo.svg` first and fails if a folder has neither.
+3. Add `logo.svg` with a square viewBox in the same folder. When the asset has no SVG logo, add `logo.png` instead (square, at least 128×128). The build uses `logo.svg` first and fails if a folder has neither. Record the logo's source and license in [Logo sources](#logo-sources).
 4. Run `npm run generate` and commit both your `data/` changes and the regenerated `whitechain.tokenlist.json`.
 5. Open a PR. CI runs `npm run validate` and checks that the committed list matches its sources.
 
@@ -98,6 +98,21 @@ export const CHAINS = {
 ```
 
 When Whitechain mainnet ships, add its entry here, then reference the network name in the relevant `data/<SYMBOL>/data.json` files.
+
+## Logo sources
+
+Every logo is stored unmodified, byte for byte as downloaded.
+
+| Token | File | Source | License or terms |
+| --- | --- | --- | --- |
+| ETH | `data/ETH/logo.svg` | "ETH diamond (gray)", `eth-diamond-black.svg`, from the [ethereum.org brand assets](https://ethereum.org/en/assets/) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), per the [ethereum.org terms of use](https://ethereum.org/en/terms-of-use/). Credit: ethereum.org. |
+| USDC | `data/USDC/logo.svg` | `Token Logo/USDC Token.svg` from the USDC logos in [Circle's brand kit](https://www.circle.com/pressroom) | [Circle Brand Use Policy](https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/CircleBrandUsePolicy.pdf) |
+| USDT | `data/USDT/logo.svg` | "Tether Logo Formatted for Use in Circular Displays", `logoCircle.svg`, from [Tether's media assets](https://tether.to/en/media) | Tether's trademark guidelines on the same page |
+| USDW | `data/USDW/logo.svg` | The logo the testnet DEX app shows for USDW | No license stated |
+| WCATS | `data/WCATS/logo.svg` | The logo the testnet DEX app shows for WhiteCats | No license stated |
+| WWBT | `data/WWBT/logo.png` | The WBT logo the testnet DEX app shows | No license stated |
+
+All trademarks are the property of their respective owners.
 
 ## Hosting
 
