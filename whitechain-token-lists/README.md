@@ -4,7 +4,7 @@ A [Uniswap-standard](https://github.com/Uniswap/token-lists) token list for Whit
 
 The list is generated from per-token source files under [`data/`](./data) and validated against the official `@uniswap/token-lists` JSON schema. The structure mirrors [`mantlenetworkio/mantle-token-lists`](https://github.com/mantlenetworkio/mantle-token-lists).
 
-> All token data is **testnet-only** for now (Whitechain Sepolia, chainId `1874`). The pipeline is chain-agnostic and extends cleanly to mainnet – see [Adding a network](#adding-a-network).
+> The list covers Whitechain Sepolia (chainId `1874`) and Whitechain Mainnet (chainId `1875`). Mainnet currently lists WWBT only; other tokens are added once their mainnet contracts are deployed.
 
 ## Repository layout
 
@@ -93,11 +93,11 @@ Networks live in [`src/chains.ts`](./src/chains.ts) as a `name -> chainId` map:
 ```ts
 export const CHAINS = {
   "whitechain-testnet": 1874,
-  // "whitechain": <mainnet-chainId>,  // TODO: add when mainnet launches
+  "whitechain": 1875,
 } as const satisfies Record<string, number>;
 ```
 
-When Whitechain mainnet ships, add its entry here, then reference the network name in the relevant `data/<SYMBOL>/data.json` files.
+To add another network, add its entry here, then reference the network name in the relevant `data/<SYMBOL>/data.json` files.
 
 ## Logo sources
 

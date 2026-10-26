@@ -6,6 +6,9 @@
   "website": "https://whitechain.io",
   "twitter": "@WhiteBit",
   "tokens": {
+    "whitechain": {
+      "address": "0x4200000000000000000000000000000000000006"
+    },
     "whitechain-testnet": {
       "address": "0x4200000000000000000000000000000000000006"
     }

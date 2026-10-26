@@ -7,7 +7,7 @@
     "infrastructure",
     "whitechain"
   ],
-  "timestamp": "2026-10-16T09:14:48.156Z",
+  "timestamp": "2026-10-26T16:25:25.388Z",
   "tokens": [
     {
       "chainId": 1874,
@@ -56,11 +56,19 @@
       "symbol": "WWBT",
       "decimals": 18,
       "logoURI": "https://whitechain.io/tokens/data/WWBT/logo.png"
+    },
+    {
+      "chainId": 1875,
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped WhiteBIT Coin",
+      "symbol": "WWBT",
+      "decimals": 18,
+      "logoURI": "https://whitechain.io/tokens/data/WWBT/logo.png"
     }
   ],
   "version": {
     "major": 1,
-    "minor": 1,
+    "minor": 2,
     "patch": 0
   }
 }
