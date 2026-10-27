@@ -7,7 +7,7 @@
     "infrastructure",
     "whitechain"
   ],
-  "timestamp": "2026-10-26T16:25:25.388Z",
+  "timestamp": "2026-10-27T12:39:37.051Z",
   "tokens": [
     {
       "chainId": 1874,
@@ -27,7 +27,7 @@
     },
     {
       "chainId": 1874,
-      "address": "0xaa7962d073935D387e8d442DA1D7149C81388f46",
+      "address": "0xcedfB56113143d55b2358b8CFbB0dEB5Ad2f55a7",
       "name": "Tether USD",
       "symbol": "USDT",
       "decimals": 6,
@@ -67,8 +67,8 @@
     }
   ],
   "version": {
-    "major": 1,
-    "minor": 2,
+    "major": 2,
+    "minor": 0,
     "patch": 0
   }
 }
