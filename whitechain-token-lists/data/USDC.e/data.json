@@ -1,0 +1,11 @@
+{
+  "name": "Bridged USDC (Whitechain)",
+  "symbol": "USDC.e",
+  "decimals": 6,
+  "description": "Bridged USD Coin on Whitechain Mainnet.",
+  "tokens": {
+    "whitechain": {
+      "address": "0xF97B9Bf62916f1EB42Dd906a7254603e7b9FC4a7"
+    }
+  }
+}

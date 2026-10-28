@@ -4,7 +4,7 @@ A [Uniswap-standard](https://github.com/Uniswap/token-lists) token list for Whit
 
 The list is generated from per-token source files under [`data/`](./data) and validated against the official `@uniswap/token-lists` JSON schema. The structure mirrors [`mantlenetworkio/mantle-token-lists`](https://github.com/mantlenetworkio/mantle-token-lists).
 
-> The list covers Whitechain Sepolia (chainId `1874`) and Whitechain Mainnet (chainId `1875`). Mainnet currently lists WWBT only; other tokens are added once their mainnet contracts are deployed.
+> The list covers Whitechain Sepolia (chainId `1874`) and Whitechain Mainnet (chainId `1875`). Mainnet currently lists WWBT and USDC.e; other tokens are added once their mainnet contracts are deployed.
 
 ## Repository layout
 
@@ -15,6 +15,9 @@ The list is generated from per-token source files under [`data/`](./data) and va
 │   │   ├── data.json
 │   │   └── logo.svg
 │   ├── USDC/
+│   │   ├── data.json
+│   │   └── logo.svg
+│   ├── USDC.e/
 │   │   ├── data.json
 │   │   └── logo.svg
 │   ├── USDT/
@@ -107,6 +110,7 @@ Every logo is stored unmodified, byte for byte as downloaded.
 | --- | --- | --- | --- |
 | ETH | `data/ETH/logo.svg` | "ETH diamond (gray)", `eth-diamond-black.svg`, from the [ethereum.org brand assets](https://ethereum.org/en/assets/) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), per the [ethereum.org terms of use](https://ethereum.org/en/terms-of-use/). Credit: ethereum.org. |
 | USDC | `data/USDC/logo.svg` | `Token Logo/USDC Token.svg` from the USDC logos in [Circle's brand kit](https://www.circle.com/pressroom) | [Circle Brand Use Policy](https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/CircleBrandUsePolicy.pdf) |
+| USDC.e | `data/USDC.e/logo.svg` | `Token Logo/USDC Token.svg` from the USDC logos in [Circle's brand kit](https://www.circle.com/pressroom) | [Circle Brand Use Policy](https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/CircleBrandUsePolicy.pdf) |
 | USDT | `data/USDT/logo.svg` | "Tether Logo Formatted for Use in Circular Displays", `logoCircle.svg`, from [Tether's media assets](https://tether.to/en/media) | Tether's trademark guidelines on the same page |
 | USDW | `data/USDW/logo.svg` | The logo the testnet DEX app shows for USDW | No license stated |
 | WCATS | `data/WCATS/logo.svg` | The logo the testnet DEX app shows for WhiteCats | No license stated |

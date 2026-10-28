@@ -7,7 +7,7 @@
     "infrastructure",
     "whitechain"
   ],
-  "timestamp": "2026-10-27T12:39:37.051Z",
+  "timestamp": "2026-10-28T11:10:57.322Z",
   "tokens": [
     {
       "chainId": 1874,
@@ -24,6 +24,14 @@
       "symbol": "USDC",
       "decimals": 6,
       "logoURI": "https://whitechain.io/tokens/data/USDC/logo.svg"
+    },
+    {
+      "chainId": 1875,
+      "address": "0xF97B9Bf62916f1EB42Dd906a7254603e7b9FC4a7",
+      "name": "Bridged USDC (Whitechain)",
+      "symbol": "USDC.e",
+      "decimals": 6,
+      "logoURI": "https://whitechain.io/tokens/data/USDC.e/logo.svg"
     },
     {
       "chainId": 1874,
@@ -68,7 +76,7 @@
   ],
   "version": {
     "major": 2,
-    "minor": 0,
+    "minor": 1,
     "patch": 0
   }
 }
