@@ -23,12 +23,6 @@ The list is generated from per-token source files under [`data/`](./data) and va
 │   ├── USDT/
 │   │   ├── data.json
 │   │   └── logo.svg
-│   ├── USDW/
-│   │   ├── data.json
-│   │   └── logo.svg
-│   ├── WCATS/
-│   │   ├── data.json
-│   │   └── logo.svg
 │   └── WWBT/
 │       ├── data.json
 │       └── logo.png
@@ -112,8 +106,6 @@ Every logo is stored unmodified, byte for byte as downloaded.
 | USDC | `data/USDC/logo.svg` | `Token Logo/USDC Token.svg` from the USDC logos in [Circle's brand kit](https://www.circle.com/pressroom) | [Circle Brand Use Policy](https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/CircleBrandUsePolicy.pdf) |
 | USDC.e | `data/USDC.e/logo.svg` | `Token Logo/USDC Token.svg` from the USDC logos in [Circle's brand kit](https://www.circle.com/pressroom) | [Circle Brand Use Policy](https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/CircleBrandUsePolicy.pdf) |
 | USDT | `data/USDT/logo.svg` | "Tether Logo Formatted for Use in Circular Displays", `logoCircle.svg`, from [Tether's media assets](https://tether.to/en/media) | Tether's trademark guidelines on the same page |
-| USDW | `data/USDW/logo.svg` | The logo the testnet DEX app shows for USDW | No license stated |
-| WCATS | `data/WCATS/logo.svg` | The logo the testnet DEX app shows for WhiteCats | No license stated |
 | WWBT | `data/WWBT/logo.png` | The WBT logo the testnet DEX app shows | No license stated |
 
 All trademarks are the property of their respective owners.
