@@ -7,7 +7,7 @@
     "infrastructure",
     "whitechain"
   ],
-  "timestamp": "2026-10-28T11:10:57.322Z",
+  "timestamp": "2026-10-28T12:01:03.886Z",
   "tokens": [
     {
       "chainId": 1874,
@@ -43,22 +43,6 @@
     },
     {
       "chainId": 1874,
-      "address": "0x071c373d58A5290982a0E916D529a27849baE6e0",
-      "name": "USDW",
-      "symbol": "USDW",
-      "decimals": 6,
-      "logoURI": "https://whitechain.io/tokens/data/USDW/logo.svg"
-    },
-    {
-      "chainId": 1874,
-      "address": "0x8c24730c69cC46F989d4fD85d53a950d4B3F9D9f",
-      "name": "WhiteCats",
-      "symbol": "WCATS",
-      "decimals": 18,
-      "logoURI": "https://whitechain.io/tokens/data/WCATS/logo.svg"
-    },
-    {
-      "chainId": 1874,
       "address": "0x4200000000000000000000000000000000000006",
       "name": "Wrapped WhiteBIT Coin",
       "symbol": "WWBT",
@@ -75,8 +59,8 @@
     }
   ],
   "version": {
-    "major": 2,
-    "minor": 1,
+    "major": 3,
+    "minor": 0,
     "patch": 0
   }
 }
